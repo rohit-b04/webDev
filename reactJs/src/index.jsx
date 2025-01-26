@@ -4,11 +4,11 @@ import Reactdom from "react-dom";
 //It should display a h1 heading.
 Reactdom.render(
   <div>
-    <h1>Ulist</h1>
+    <h1>My favorite foods</h1>
     <ul>
-      <li>list1</li>
-      <li>list2</li>
-      <li>list3</li>
+      <li>Dal baati</li>
+      <li>Paav bhaji</li>
+      <li>Idli Sambar</li>
     </ul>
   </div>,
   document.getElementById("root")
