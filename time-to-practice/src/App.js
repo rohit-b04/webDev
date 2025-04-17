@@ -1,18 +1,13 @@
-import React, { useState } from "react";
-import InputData from "./components/Inputs/InputData";
-import DisplayUsers from "./components/UI/DisplayUsers";
+import React, { useState, Fragment } from "react";
+import InputData from "./components/Users/InputData";
+import DisplayUsers from "./components/Users/DisplayUsers";
+import Wrapper from "./components/Helpers/Wrapper";
+
 
 function App() {
-  const [userDetails, setUserDetails] = useState([
-    {
-      username: "NoName",
-      age: "1",
-      id: Math.random().toString(),
-    },
-  ]);
+  const [userDetails, setUserDetails] = useState([]);
 
-  const displayUserHandler = (userData) => {
-    //console.log(userData);
+  const addUserHandler = (userData) => {
     setUserDetails((prevState) => {
       return [
         ...prevState,
@@ -23,27 +18,19 @@ function App() {
         },
       ];
     });
-    //console.log(userDetails.map((userDetail)=>{return userDetail}));
   };
-  //console.log(userDetails);
-  //const displayData = userDetails.map();
-  //console.log(displayData);
 
   return (
-    <div>
-      <InputData displayUser={displayUserHandler} userDetails={userDetails} />
-      <div>
+    <Fragment>
+      <InputData addUser={addUserHandler} userDetails={userDetails} />
         {userDetails.map((userDetail) => (
-          //<h1>{userDetail.username}</h1>
-          //console.log(userDetail.username);
           <DisplayUsers
             username={userDetail.username}
             age={userDetail.age}
             key={userDetail.id}
           />
         ))}
-      </div>
-    </div>
+    </Fragment>
   );
 }
 

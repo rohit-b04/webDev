@@ -15,11 +15,18 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.invalid h1 {
+.invalid header {
   font-size: 1.3rem;
   margin-bottom: 1rem;
   color: #ffb3b3; /* soft red */
 }
+
+.invalid h2 {
+  font-size: 1.0rem;
+  margin-bottom: 1rem;
+  color: #ffb3b3; /* soft red */
+}
+
 
 .invalid button {
   background: #40e0d0; /* turquoise */
@@ -52,8 +59,8 @@
 
 .overlay {
   position: fixed;
-  width: 30%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.6); /* darker overlay */
   z-index: 999;
 }
