@@ -4,11 +4,11 @@ const Button = (props) => {
   };
   return (
     <button
-      type={props.type}
+      type={!props.type? "submit" :props.type}
       className={`${props.className}`}
-      onClick={clickHandler}
+      onClick={!props.onClick?null:clickHandler}
     >
-      {props.name}
+      {props.children}
     </button>
   );
 };
