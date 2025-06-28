@@ -3,7 +3,6 @@ import InputData from "./components/Users/InputData";
 import DisplayUsers from "./components/Users/DisplayUsers";
 import Wrapper from "./components/Helpers/Wrapper";
 
-
 function App() {
   const [userDetails, setUserDetails] = useState([]);
 
@@ -23,13 +22,7 @@ function App() {
   return (
     <Fragment>
       <InputData addUser={addUserHandler} userDetails={userDetails} />
-        {userDetails.map((userDetail) => (
-          <DisplayUsers
-            username={userDetail.username}
-            age={userDetail.age}
-            key={userDetail.id}
-          />
-        ))}
+      {!userDetails.length ? null : <DisplayUsers userData={userDetails} />}
     </Fragment>
   );
 }

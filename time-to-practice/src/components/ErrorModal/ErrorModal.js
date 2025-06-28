@@ -11,7 +11,7 @@ const Error = (props) => {
       <footer>
         <h2>{props.errorData.message}</h2>
       </footer>
-      <Button type="button" name="Okay" onClick={() => props.triggered(true)} />
+      <Button type="button" onClick={() => props.triggered(true)} > Okay </Button>
     </Card>
   );
 };

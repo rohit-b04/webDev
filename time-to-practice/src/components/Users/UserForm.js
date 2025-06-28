@@ -1,20 +1,17 @@
 import styles from "./UserForm.module.css";
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 
 const UserForm = (props) => {
-  const [enteredUsername, setEnteredUsername] = useState("");
-  const [enteredAge, setEnteredAge] = useState("");
+  const nameChangeRef = useRef();
+  const ageChangeRef = useRef();
 
-  const userChangeHandler = (event) => setEnteredUsername(event.target.value);
-
-  const ageChangeHandler = (event) => setEnteredAge(event.target.value);
-
-  const clickHandler = (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
-    props.user.username = enteredUsername;
-    props.user.age = enteredAge;
+
+    const enteredUsername = nameChangeRef.current.value;
+    const enteredAge = ageChangeRef.current.value;
 
     const isEnteredUsernameValid = enteredUsername.trim().length > 0;
     const isEnteredAgeValid = enteredAge.trim().length > 0;
@@ -25,22 +22,21 @@ const UserForm = (props) => {
 
     if (!isFormValid || !isAgeLegal) return;
 
-    props.addUser(props.user);
-    setEnteredUsername("");
-    setEnteredAge("");
+    props.addUser({ username: enteredUsername, age: +enteredAge });
+    nameChangeRef.current.value = "";
+    ageChangeRef.current.value = "";
   };
   return (
     <Card className={styles.userForm}>
-      <form>
+      <form onSubmit={submitHandler}>
         <label>Add User: </label>
-        <input
-          type="text"
-          value={enteredUsername}
-          onChange={userChangeHandler}
-        />
+        <input type="text" ref={nameChangeRef} />
         <label>Age: </label>
-        <input type="number" value={enteredAge} onChange={ageChangeHandler} />
-        <Button type = "submit" className={styles.button} onClick={clickHandler} name = "Add"/>
+        <input type="number" ref={ageChangeRef} />
+        <Button type="" className={styles.button}>
+          {" "}
+          Add{" "}
+        </Button>
       </form>
     </Card>
   );

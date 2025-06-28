@@ -1,15 +1,14 @@
 import styles from "./DisplayUsers.module.css";
 
 const DisplayUsers = (props) => {
-  //console.log(props.username);
-  return (
-    <ul className={styles.userCard}>
+  return props.userData.map((user) => (
+    <ul className={styles.userCard} key={user.id}>
       <label>Username: </label>
-      <span>{props.username}</span>
+      <span>{user.username}</span>
       <label> Age: </label>
-      <span>{props.age}</span>
+      <span>{user.age}</span>
     </ul>
-  );
+  ));
 };
 
 export default DisplayUsers;
