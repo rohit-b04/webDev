@@ -1,0 +1,12 @@
+.headerContainer {
+    /* display: inline; */
+    display: flex;
+    flex-direction: row;
+    gap: 50rem;
+    background-color: aqua;
+}
+
+.headerContainer h3 {
+    margin: 10px 50px;
+    text-align: center;
+}
