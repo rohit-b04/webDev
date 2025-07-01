@@ -1,0 +1,37 @@
+
+.content {
+    width: 700px;
+    list-style: none;
+    /* height: 500px; */
+    background-color: rgb(142, 142, 223);
+    position: fixed;
+    /*Can also be `absolute`*/
+    left: 0;
+    right: 0;
+    top: 20%;
+    bottom: 0;
+    margin: auto;
+    border-radius: 10px;
+    /*Solves a problem in which the content is being cut when the div is smaller than its' wrapper:*/
+    width: 100vh;
+    /* max-width: 100%; */
+    max-height: 80%;
+    overflow: auto;
+}
+
+.button {
+
+    border: none;
+    color: black;
+    padding: 5px 7px;
+    text-align: center;
+    font-size: 16px;
+    margin: 1px 550px;
+    cursor: pointer;
+
+}
+
+.item__name {
+    color: black;
+    margin: 0%;
+}
