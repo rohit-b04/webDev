@@ -7,35 +7,19 @@ import logoImg from "./assets/logo.png";
 import AvailablePlaces from "./components/AvailablePlaces.jsx";
 import { fetchUserPlaces, updateUserPlaces } from "./http.js";
 import ErrorModal from "./components/ErrorModal.jsx";
+import { useFetch } from "./components/hooks/useFetch.js";
+
+
 
 function App() {
   const selectedPlace = useRef();
-
-  const [userPlaces, setUserPlaces] = useState([]);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const [errorUpdatingPlaces, setErrorUpdatingPlaces] = useState();
 
-  const [isFetching, setIsFetching] = useState(true);
-  const [errorFetchingUserPlaces, setErrorFetchingUserPlaces] = useState();
 
-  useEffect(() => {
-    async function userPlacesData() {
-      setIsFetching(true);
-      try {
-        const places = await fetchUserPlaces();
-        setUserPlaces(places);
-      } catch (error) {
-        setUserPlaces(userPlaces);
-        setErrorFetchingUserPlaces({
-          message: error.message || "Error fetchging the user places data",
-        });
-      }
-      setIsFetching(false);
-    }
-    userPlacesData();
-  }, []);
+  const {isFetching, error: errorFetchingUserPlaces, userData: userPlaces, setUserData: setUserPlaces} = useFetch(fetchUserPlaces, []);
 
   function handleStartRemovePlace(place) {
     setModalIsOpen(true);
@@ -81,7 +65,7 @@ function App() {
     }
 
     setModalIsOpen(false);
-  }, []);
+  }, [userPlaces, setUserPlaces]);
 
   function handleError() {
     setErrorUpdatingPlaces(null);
