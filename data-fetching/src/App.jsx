@@ -10,7 +10,6 @@ import ErrorModal from "./components/ErrorModal.jsx";
 import { useFetch } from "./components/hooks/useFetch.js";
 
 
-
 function App() {
   const selectedPlace = useRef();
 
