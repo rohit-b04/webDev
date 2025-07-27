@@ -1,7 +1,7 @@
 import Modal from "./Modal";
 import UserProgressContext from "../../store/UserProgressContext";
 import CartContext from "../../store/CartContext";
-import { useContext } from "react";
+import { useContext, useActionState } from "react";
 import Input from "./Input";
 import { currencyFormatter } from "../../util/formatting";
 import Button from "./Button";
@@ -23,8 +23,8 @@ export default function Checkout() {
   const {
     data,
     error,
-    isLoading: isSending,
     sendRequest,
+    clearData,
   } = useHttp("http://localhost:3000/orders", requestConfig);
 
   const cartTotal = cartCtx.items.reduce((totalCartAmount, item) => {
@@ -35,16 +35,17 @@ export default function Checkout() {
     userProgressCtx.hideCheckout();
   }
 
-  function handleFinish() {}
+  function handleFinish() {
+    userProgressCtx.hideCheckout();
+    cartCtx.clearCart();
+    clearData();
+  }
 
-
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    const fd = new FormData(event.target);
+  async function checkoutAction(prevState, fd) {
+    
     const customerData = Object.fromEntries(fd.entries());
 
-    sendRequest(
+    await sendRequest(
       JSON.stringify({
         order: {
           items: cartCtx.items,
@@ -53,6 +54,8 @@ export default function Checkout() {
       })
     );
   }
+
+    const [formState, formAction, isSending] = useActionState(checkoutAction, null)
 
   let actions = (
     <>
@@ -75,7 +78,7 @@ export default function Checkout() {
         <h2>Success!</h2>
         <p>Your order was submitted successfully</p>
         <p className="modal-actions">
-          <Button onClick={handleCloseCheckout}>Okay</Button>
+          <Button onClick={handleFinish}>Okay</Button>
         </p>
       </Modal>
     );
@@ -87,7 +90,7 @@ export default function Checkout() {
       onClose={handleCloseCheckout}
     >
       <h2>Checkout</h2>
-      <form onSubmit={handleSubmit}>
+      <form action={formAction}>
         <p> Total Amount-{currencyFormatter.format(cartTotal)} </p>
 
         <Input label="Full Name" type="text" id="name" />
