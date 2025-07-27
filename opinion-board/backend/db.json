@@ -1,0 +1,60 @@
+{
+  "opinions": [
+    {
+      "id": 1753452468629,
+      "votes": 2,
+      "userName": "rohit",
+      "title": "React useActionState",
+      "body": "useActionState is a very useful state for a form management and validation"
+    },
+    {
+      "id": 1753446405390,
+      "votes": 2,
+      "userName": "Pratik",
+      "title": "The most handsome man",
+      "body": "In my opinion, the  most handsome man is my brother rohit bargal"
+    },
+    {
+      "id": 1753442456080,
+      "votes": 2,
+      "userName": "Prathamesh",
+      "title": "Got Molested",
+      "body": "Today a man ...."
+    },
+    {
+      "id": 1753440025143,
+      "votes": 1,
+      "userName": "xya",
+      "title": "asdkljf",
+      "body": "asdfbjkvebfj"
+    },
+    {
+      "id": 1753439980668,
+      "votes": 3,
+      "userName": "vishal",
+      "title": "the react learning journey",
+      "body": "React is a very easy to learn and implement."
+    },
+    {
+      "id": 1753426053370,
+      "votes": 1,
+      "userName": "Rohit",
+      "title": "this is title",
+      "body": "sdfsdafsdavacvsdfv"
+    },
+    {
+      "id": 1,
+      "userName": "Maximilian Schwarzmüller",
+      "title": "Do yourself a favor and learn React!",
+      "body": "React is an amazing JavaScript library!\n\nDespite all it's shortcomings.",
+      "votes": 0
+    },
+    {
+      "id": 2,
+      "userName": "Maximilian Schwarzmüller",
+      "title": "React has more depth than you might first think!",
+      "body": "React is a great library to learn, but it's not just about the basics. Dive deeper!\nFor example with this course!",
+      "votes": 0
+    }
+  ]
+}
